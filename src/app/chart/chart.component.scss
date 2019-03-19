@@ -8,11 +8,17 @@ app-chart {
       vertical-align: middle;
     }
     table {
+      border-top: none;
+      border-left: none;
       font-size: 0.8rem;
       td {
         text-align: center;
       }
       thead {
+        .first-top-th {
+          border-top: none;
+          border-left: none;
+        }
         th {
           text-align: center;
         }
