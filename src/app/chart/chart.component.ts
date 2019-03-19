@@ -196,8 +196,8 @@ export class ChartComponent implements OnChanges {
 
 
     /* Add Axis into SVG */
-    const xAxis = d3.axisBottom(xScale);//.ticks(5);
-    const yAxis = d3.axisLeft(yScale);//.ticks(5);
+    const xAxis = d3.axisBottom(xScale);
+    const yAxis = d3.axisLeft(yScale);
 
     svg.append('g')
       .attr('class', 'x axis')
