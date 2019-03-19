@@ -1,5 +1,25 @@
 app-chart {
+  .chart-div {
+    padding: 30px;
+    .color-bar {
+      height: 5px;
+      width: 30px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    table {
+      font-size: 0.8rem;
+      td {
+        text-align: center;
+      }
+      thead {
+        th {
+          text-align: center;
+        }
+      }
+    }
     #chart {
+        margin-left: 90px; 
         height: inherit;
         width: inherit;
 
@@ -34,4 +54,5 @@ app-chart {
           font-size: 12px;
         }
     }
+  }
 }

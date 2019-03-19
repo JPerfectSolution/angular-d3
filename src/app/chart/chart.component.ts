@@ -15,6 +15,8 @@ export class ChartComponent implements OnChanges {
   @Input()
   // data: DataModel[];
   data: LineData[];
+  color: any;
+  td_width: number;
 
   margin = {top: 20, right: 20, bottom: 30, left: 40};
 
@@ -28,6 +30,16 @@ export class ChartComponent implements OnChanges {
   }
 
   private createChart(): void {
+    if (!this.data) {
+      return;
+    }
+    d3.select('svg').remove();
+
+    const element = this.chartContainer.nativeElement;
+
+    const contentWidth = element.offsetWidth - this.margin.left - this.margin.right;
+    this.td_width = contentWidth / this.data[0].values.length;
+    const contentHeight = element.offsetHeight - this.margin.top - this.margin.bottom;
 
     const width = 500;
     const height = 300;
@@ -56,24 +68,37 @@ export class ChartComponent implements OnChanges {
     });
 
     /* Scale */
-    const xScale = d3.scaleTime()
-      .domain(d3.extent(this.data[0].values, d => d.date))
-      // .domain(this.data[0].values.map(d => d.date))
-      .range([0, width - margin]);
+    const xScale = d3.scaleBand()
+      .domain(this.data[0].values.map(d => d.date))
+      .range([0, contentWidth])
+      .padding(1);
+      // .range([0, width - margin]);
 
     const yScale = d3.scaleLinear()
-      .domain([0, d3.max(this.data[0].values, d => d.price)])
+      .domain([0, d3.max(this.data, function (d) {
+        return d3.max(d.values, (di) => di.price);
+      })])
       .range([height - margin, 0]);
+      // .range([contentHeight, 0]);
 
     const color = d3.scaleOrdinal(d3.schemeCategory10);
+    this.color = [];
+    for (let index = 0; index < this.data.length; index++) {
+      this.color.push(color(index.toString()));
+    }
 
     /* Add SVG */
     const svg = d3.select('#chart').append('svg')
-      .attr('width', (width + margin) + 'px')
+      .attr('width', (element.offsetWidth) + 'px')
       .attr('height', (height + margin) + 'px')
       .append('g')
-      .attr('transform', `translate(${margin}, ${margin})`);
+      .attr('transform', `translate(${this.margin.left + this.margin.right}, ${this.margin.top + this.margin.bottom})`);
 
+    // const svg = d3.select('#chart').append('svg')
+    //   .attr('width', element.offsetWidth)
+    //   .attr('height', element.offsetHeight)
+    //   .append('g')
+    //   .attr('transform', `translate(${margin}, ${margin})`);
 
     /* Add line into SVG */
     const line = d3.line()
@@ -93,7 +118,8 @@ export class ChartComponent implements OnChanges {
           .style('fill', color(i.toString()))
           .text(d.name)
           .attr('text-anchor', 'middle')
-          .attr('x', (width - margin) / 2)
+          // .attr('x', (width - margin) / 2)
+          .attr('x', contentWidth / 2)
           .attr('y', 5);
       })
       .on('mouseout',  (d) => {
@@ -170,12 +196,13 @@ export class ChartComponent implements OnChanges {
 
 
     /* Add Axis into SVG */
-    const xAxis = d3.axisBottom(xScale).ticks(5);
-    const yAxis = d3.axisLeft(yScale).ticks(5);
+    const xAxis = d3.axisBottom(xScale);//.ticks(5);
+    const yAxis = d3.axisLeft(yScale);//.ticks(5);
 
     svg.append('g')
       .attr('class', 'x axis')
       .attr('transform', `translate(0, ${height - margin})`)
+      // .attr('transform', `translate(0, ${contentHeight})`)
       .call(xAxis);
 
     svg.append('g')

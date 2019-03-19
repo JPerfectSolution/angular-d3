@@ -9,7 +9,7 @@ export class LineData {
 }
 
 export class Point {
-  date: number;
+  date: string;
   price: number;
 }
 export interface DataModel {

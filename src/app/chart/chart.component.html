@@ -1,1 +1,20 @@
-<div #chart id="chart" (window:resize)="onResize($event)"></div>
+<div class = "chart-div">
+  <div #chart id="chart" (window:resize)="onResize($event)"></div>
+  <div *ngIf="data">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col" [style.width.px]="150"></th>
+          <th scope="col" [style.width.px]="td_width" *ngFor="let item of data[0].values">{{item.date}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data; index as i;">
+          <th scope="row" [style.color]="color[i]"><div class="color-bar" [style.background-color]="color[i]"></div> {{item.name}}</th>
+          <td *ngFor="let point of item.values">{{point.price}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
