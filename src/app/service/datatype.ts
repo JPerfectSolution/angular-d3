@@ -16,3 +16,9 @@ export interface DataModel {
   letter: string;
   frequency: number;
 }
+
+export class StackedData {
+  year: string;
+  data1: number;
+  data2: number;
+}

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { DataType, DataModel } from './service/datatype';
+import { DataType, DataModel, StackedData } from './service/datatype';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +11,10 @@ import { DataType, DataModel } from './service/datatype';
 export class AppComponent {
   title = 'angular-d3';
   data: Observable<DataModel[]>;
+  stackedData: Observable<StackedData[]>;
 
   constructor(private http: HttpClient) {
     this.data = this.http.get<DataModel[]>('assets/data/data.json');
+    this.stackedData = this.http.get<StackedData[]>('assets/data/stacked-chart.json');
   }
 }

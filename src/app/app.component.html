@@ -5,6 +5,13 @@
   </h1>
 </div>
 
-<app-chart [data] = "data | async"></app-chart>
+<!-- <div class="row">
+  <div class="col-md-6">
+    <app-chart [data]="data | async"></app-chart>
+  </div>
+  <div class="col-md-6"> -->
+    <app-stacked-chart [data]="stackedData | async"></app-stacked-chart>
+  <!-- </div>
+</div> -->
 
 <router-outlet></router-outlet>

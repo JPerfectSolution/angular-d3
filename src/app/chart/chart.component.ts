@@ -1,5 +1,5 @@
 import { Component, OnChanges, ViewChild, ElementRef, Input, ViewEncapsulation } from '@angular/core';
-import { DataType, LineData, DataModel } from '../service/datatype';
+import { LineData } from '../service/datatype';
 import * as d3 from 'd3';
 
 @Component({
@@ -33,7 +33,7 @@ export class ChartComponent implements OnChanges {
     if (!this.data) {
       return;
     }
-    d3.select('svg').remove();
+    // d3.select('svg').remove();
 
     const element = this.chartContainer.nativeElement;
 

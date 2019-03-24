@@ -1,0 +1,28 @@
+
+.bar {
+  fill: steelblue;
+}
+.bar:hover {
+  fill: brown;
+}
+.title {
+  font: 25px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.axis {
+  font: 10px sans-serif;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.x.axis path {
+  display: none;
+}
+
+
+#stackedchart {
+    height: inherit;
+    width: inherit;
+}

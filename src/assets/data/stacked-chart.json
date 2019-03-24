@@ -1,0 +1,52 @@
+[
+  {
+    "year": "Pct  - 31/12/18",
+    "data1": "23",
+    "data2": "32"
+  },
+  {
+    "year": "Pct - 31/3/19",
+    "data1": "41",
+    "data2": "45"
+  },
+  {
+    "year": "Titoli - 31/12/18",
+    "data1": "14",
+    "data2": "23"
+  },
+  {
+    "year": "Titoli - 31/3/19",
+    "data1": "11",
+    "data2": "44"
+  },
+  {
+    "year": "Crediti vs Banche - 31/12/18",
+    "data1": "344",
+    "data2": "342"
+  },
+  {
+    "year": "Crediti vs Banche - 31/3/19",
+    "data1": "341",
+    "data2": "356"
+  },
+  {
+    "year": "Fuori bilancio - 31/12/18",
+    "data1": "34",
+    "data2": "55"
+  },
+  {
+    "year": "Fuori bilancio - 31/3/19",
+    "data1": "35",
+    "data2": "43"
+  },
+  {
+    "year": "Crediti vs Clienti - 31/12/18",
+    "data1": "557",
+    "data2": "239"
+  },
+  {
+    "year": "Crediti vs Clienti - 31/3/19",
+    "data1": "578",
+    "data2": "212"
+  }
+]

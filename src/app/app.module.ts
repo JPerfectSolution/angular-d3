@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartComponent } from './chart/chart.component';
+import { StackedChartComponent } from './stacked-chart/stacked-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ChartComponent
+    ChartComponent,
+    StackedChartComponent
   ],
   imports: [
     BrowserModule,
