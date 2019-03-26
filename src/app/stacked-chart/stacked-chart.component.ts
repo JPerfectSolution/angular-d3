@@ -115,8 +115,8 @@ export class StackedChartComponent implements OnChanges {
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'central')
       .text((d: any) => {
-        console.log(d);
-        return (d.name === 'data1' ? d.y1 : d.y1 - d.y0);
+        const value = (d.name === 'data1' ? d.y1 : d.y1 - d.y0);
+        return (value === 0 ? '' : value);
       });
 
 
